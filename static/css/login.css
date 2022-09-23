@@ -1,0 +1,20 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+nav.navbar{
+    background-color: #F3F1EE;
+    border-bottom: #1D5258;
+}
+a.logo{
+    font-family: 'Merriweather', serif;
+}
+
+a.book-nav-button{
+    background-color: #1D5258;
+
+}
+section.section1-container{
+    max-height: 100vh;
+    background-color: #F3F1EE;
+}

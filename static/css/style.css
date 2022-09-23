@@ -1,0 +1,33 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+nav.navbar{
+    background-color: #F3F1EE;
+    border-bottom: #1D5258;
+}
+section.section1-container{
+    max-height: 100vh;
+    background-color: #F3F1EE;
+} 
+a.logo{
+    font-family: 'Merriweather', serif;
+
+}
+a.book-nav-button{
+    background-color: #1D5258;
+
+}
+a.btn1{
+    background-color: #1D5258;
+    border-color: #1D5258;
+    border-radius: 15px;
+}
+a.btn2{
+    border-color: #1D5258;
+    border-radius: 15px;
+}
+
+a.btn2:hover{
+    background-color: #1D5258;
+}
