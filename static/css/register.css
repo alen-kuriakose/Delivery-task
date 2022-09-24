@@ -15,6 +15,17 @@ a.book-nav-button{
 
 }
 section.section1-container{
-    max-height: 100vh;
+    height: 100%;
     background-color: #F3F1EE;
+}
+button.form_button{
+    background-color: #1D5258;
+}
+
+a.register_button{
+    color: #1D5258;
+}
+img.regimg{
+    width: 100%;
+    height: auto;
 }

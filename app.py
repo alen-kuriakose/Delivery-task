@@ -1,9 +1,9 @@
 from crypt import methods
-from flask import Flask, jsonify,render_template,request,redirect
+from flask import Flask, jsonify,render_template,request,redirect,session
 from flask_mysqldb import MySQL
 import yaml
-
 import mysql.connector
+import re
 from mysql.connector import Error
 
 
@@ -31,6 +31,8 @@ if __name__ == '__main__':
 
 app=Flask(__name__)
 
+app.secret_key = '123'
+
 db = yaml.full_load(open('db.yaml'))
 app.config['MYSQL_HOST'] = db['mysql_host']
 app.config['MYSQL_USER'] =db['mysql_user']
@@ -53,18 +55,39 @@ def login():
         loginPassword=loginDetails['loginPassword']
         print(loginPassword)
         cur=mysql.connection.cursor()
-        passwordQuery=cur.execute("SELECT user_password FROM login WHERE user_name=%s",(loginUser,))
+        passwordQuery=cur.execute("SELECT * FROM login WHERE user_name=%s and user_password=%s",(loginUser,loginPassword))
         print(passwordQuery)
-        userPassword=cur.fetchone()
-        print(userPassword[0])
-        if loginPassword==userPassword[0]:
+        # userPassword=cur.fetchone()
+        account=cur.fetchone()
+        print(account)
+        print(account[0])
+        # if loginPassword==userPassword[0]:
+        #     msg = 'Logged in successfully !'
+        #     # return 'success'
+        #     return redirect('/slot')
+        # else:
+        #     msg = 'Incorrect username / password !'
+        if account:
+            session['loggedin'] = True
+            print(account[0])
+            session['id'] = account[0]
+            session['username'] = account[2]
             msg = 'Logged in successfully !'
-            # return 'success'
-            return render_template('slot.html',msg=msg)
+            return render_template('slot.html', msg = msg,loginUser=loginUser)
+        elif not loginUser or not loginPassword :
+            msg = 'Please fill out the form !'
         else:
             msg = 'Incorrect username / password !'
 
     return render_template('login.html',msg=msg)
+
+
+@app.route('/logout')
+def logout():
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username', None)
+    return redirect('/login')
 
 @app.route('/register',methods=['GET','POST'])
 def register():
@@ -75,19 +98,34 @@ def register():
         newPassword=registerDetails['newPassword']
         confirmPassword=registerDetails['confirmPassword']
         cur=mysql.connection.cursor()
-        alreadyreg=cur.execute("SELECT DISTINCT 1 FROM login WHERE user_name=%s",(registerUser,))
+        alreadyreg=cur.execute("SELECT * FROM login WHERE user_name=%s",(registerUser,))
         print(alreadyreg)
-        if alreadyreg>=1:
-            msg='User already exists!'
-        else:
-            if newPassword==confirmPassword:
-                cur.execute("INSERT INTO login(user_name,user_password) values(%s,%s)",(registerUser,confirmPassword))
-                mysql.connection.commit()
-                return redirect('/slot')
-                # msg='Registered Successfully'
+        account=cur.fetchone()
+        # if alreadyreg>=1:
+        #     msg='User already exists!'
+        # else:
+        #     if newPassword==confirmPassword:
+        #         cur.execute("INSERT INTO login(user_name,user_password) values(%s,%s)",(registerUser,confirmPassword))
+        #         mysql.connection.commit()
+        #         # return redirect('/slot')
+        #         msg='Registered Successfully! Login to continue'
             
-            else:
-                msg="Passwords doesn't match"
+        #     else:
+        #         msg="Passwords doesn't match"
+        if account:
+            msg = 'Account already exists !'
+        # elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+        #     msg = 'Invalid email address !'
+        elif not re.match(r'[A-Za-z0-9]+', registerUser):
+            msg = 'Username must contain only characters and numbers !'
+        elif not registerUser or not newPassword or not confirmPassword:
+            msg = 'Please fill out the form !'
+        else:
+            cur.execute('INSERT INTO login(user_name,user_password) VALUES ( % s, % s)', (registerUser, newPassword))
+            mysql.connection.commit()
+            msg = 'You have successfully registered ! Login to continue' 
+    elif request.method == 'POST':
+        msg = 'Please fill out the form !'
 
         
     return render_template('register.html',msg=msg)
@@ -108,7 +146,7 @@ def slot():
         slotNames=cur.fetchone()
         print(slotNames)
         print(slotNames[0])
-        slotCount=slotNames[0]        
+        slotCount=slotNames[0]       
 
         # Checking if maximum entry limit is reached
         if slotCount>=20:

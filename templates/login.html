@@ -12,32 +12,54 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
+    <!-- <header>
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container navcon">
+                <a class="navbar-brand" href="#">
+                    <img src="{{url_for ('static',filename='Mask group.png')}}" alt="Bootstrap" width="auto" height="40">
+                </a>
                 <a class="navbar-brand logo" href="#">Delapp</a>
                 <a href="{{ url_for('login') }}" class='btn btn-dark book-nav-button border-0 py-2 px-4'>Book your slot</a>
             </div>
         </nav>
-    </header>
-    <section class="section1-container">
-        <div class="container">
+    </header> -->
+    <section class="section1-container ">
+        <div class="container-fluid">
             <div class="row align-items-center justify-contents-center">
-                <h1>Login page</h1>
-                <div class="col-md-6">
-                    <form method="POST" action="">
-                        <div class="msg p-5">{{ msg }}</div>
-                        <div class="form-group mb-4">
-                          <label >User name</label>
-                          <input type="text" class="form-control" name="loginUser" id="formGroupExampleInput"  aria-describedby="loginUser" placeholder="Enter user name">
+                <div class="col-md-6 p-0">
+                    <img src="{{url_for ('static',filename='Frame 5.png')}}" alt="image" class="img-fluid" >
+                </div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <div class="col-md-6"> 
+                        <div >
+                            <div class="d-flex justify-content-center">
+                                <img src="{{url_for ('static',filename='Mask group.png')}}" alt="logo" width="auto" height="80" class="m-5">
+                            </div>
+                            <div class="d-flex justify-content-center mb-5">
+                                <h4>Login to your account</h4>
+                            </div>
+                            
+                            <form method="POST" action="">
+                                <!-- <div class="msg p-5">{{ msg }}</div> -->
+                                <div class="form-group mb-4">
+                                <label class="mb-3">user name</label>
+                                <input type="text" class="form-control" name="loginUser" id="formGroupExampleInput"  aria-describedby="loginUser" placeholder="Enter user name">
+                                </div>
+                                <div class="form-group mb-4">
+                                <label class="mb-3">password</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" name="loginPassword" placeholder="password">
+                                </div>
+                                <div class="d-flex justify-content-center mb-4">
+                                    <button type="submit" class="btn btn-dark text-center px-5 py-2 form_button border-0">Login</button>
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-center">
+                                <p>Don't have an account yet? <a href="{{ url_for ('register')}}" class="p-3 text-decoration-none register_button">Register</a></p>
+                            </div>
                         </div>
-                        <div class="form-group mb-4">
-                          <label >password</label>
-                          <input type="text" class="form-control" id="formGroupExampleInput" name="loginPassword" placeholder="password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    <p>Don't have an account yet? <a href="{{ url_for ('register')}}" class="p-4">Register</a></p>
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>

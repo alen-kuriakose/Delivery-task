@@ -12,35 +12,60 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
+    <!-- <header>
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container navcon">
+                <a class="navbar-brand" href="#">
+                    <img src="{{url_for ('static',filename='Mask group.png')}}" alt="Bootstrap" width="auto" height="40">
+                </a>
                 <a class="navbar-brand logo" href="#">Delapp</a>
-                <!-- <a href="{{ url_for('login') }}" class='btn btn-dark book-nav-button border-0 py-2 px-4'>Book your slot</a> -->
+                <a href="{{ url_for('login') }}" class='btn btn-dark book-nav-button border-0 py-2 px-4'>Book your slot</a>
             </div>
         </nav>
-    </header>
+    </header> -->
     <section class="section1-container">
-        <div class="container d-flex">
+        <div class="container-fluid ">
             <div class="row align-items-center justify-contents-center">
-                <h1>Register page</h1>
-                <div class="col-md-6">
-                    <form method="POST" action="">
-                        <div class="form-group mb-4">
-                          <label >User name</label>
-                          <input type="text" class="form-control" name="registerName" id="formGroupExampleInput"  aria-describedby="loginUser" placeholder="Enter user name">
+                <div class="col-md-6 p-0">
+                    <div >
+                        <img src="{{url_for ('static',filename='Frame 6.jpg')}}" alt="image" class="img-fluid" >
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center pb-5">
+                    <div class="gghf">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{url_for ('static',filename='Mask group.png')}}" alt="logo" width="auto" height="80" class="m-5">
                         </div>
-                        <div class="form-group mb-4">
-                          <label >password</label>
-                          <input type="text" class="form-control" id="formGroupExampleInput" name="newPassword" placeholder="password">
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <h4 class="mb-2 text-center">Create an account</h4>
+                                <p class="text-center mb-2">Get started by creating an account</p>
+                                <p class="p-3 text-center">{{ msg }}</p>
+                            </div>
                         </div>
-                        <div class="form-group mb-4">
-                            <label >password</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" name="confirmPassword" placeholder="password">
-                          </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    <p class="p-3">{{ msg }}</p>
+                        <form method="POST" action="">
+                            <div class="form-group mb-3">
+                              <label class="mb-2">user name</label>
+                              <input type="text" class="form-control" name="registerName" id="formGroupExampleInput"  aria-describedby="loginUser" placeholder="Enter user name">
+                            </div>
+                            <div class="form-group mb-3">
+                              <label class="mb-2">password</label>
+                              <input type="text" class="form-control" id="formGroupExampleInput" name="newPassword" placeholder="password">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="mb-2">password</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" name="confirmPassword" placeholder="password">
+                              </div>
+                            <div class="d-flex justify-content-center mb-4">
+                                <button type="submit" class="btn btn-dark px-5 py-2 form_button border-0">Submit</button>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <p>Alreday have an account? <a href="{{ url_for ('login')}}" class="p-3 text-decoration-none register_button">Login</a></p>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>

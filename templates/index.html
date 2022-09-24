@@ -16,10 +16,10 @@
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container navcon">
                 <a class="navbar-brand" href="#">
-                    <img src="{{url_for ('static',filename='logo.png')}}" alt="Bootstrap" width="auto" height="60">
+                    <img src="{{url_for ('static',filename='Mask group.png')}}" alt="Bootstrap" width="auto" height="40">
                 </a>
-                <a class="navbar-brand logo" href="#">Delapp</a>
-                <a href="{{ url_for('login') }}" class='btn btn-dark book-nav-button border-0 py-2 px-4'>Book your slot</a>
+                <!-- <a class="navbar-brand logo" href="#">Delapp</a> -->
+                <a href="{{ url_for('login') }}" class='btn btn-dark book-nav-button border-0 py-2 px-4'>Login</a>
             </div>
         </nav>
     </header>
@@ -29,7 +29,7 @@
                 <div class="col-md-5">
                     <h1 class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing.....</h1>
                     <div>
-                        <a class="btn btn-dark btn1 p-4 px-5 me-4" href="{{ url_for('slot') }}">Book your slot</a>
+                        <a class="btn btn-dark btn1 p-4 px-5 me-4" href="{{ url_for('login') }}">Book your slot</a>
                         <a class="btn btn-outline-dark btn2 p-4 px-5  " href="{{ url_for('status') }}">Get slot status</a>
                     </div>
                 </div>

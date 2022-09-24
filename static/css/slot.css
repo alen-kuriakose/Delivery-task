@@ -6,22 +6,10 @@ nav.navbar{
     background-color: #F3F1EE;
     border-bottom: #1D5258;
 }
-a.logo{
-    font-family: 'Merriweather', serif;
-}
-
-a.book-nav-button{
-    background-color: #1D5258;
-
-}
 section.section1-container{
     max-height: 100vh;
     background-color: #F3F1EE;
-}
-button.form_button{
-    background-color: #1D5258;
-}
-
-a.register_button{
-    color: #1D5258;
+} 
+div.container1{
+    max-height: 100vh;
 }
