@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container navcon">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{url_for('index')}}">
                     <img src="{{url_for ('static',filename='Mask group.png')}}" alt="Bootstrap" width="auto" height="40">
                 </a>
                 <!-- <a class="navbar-brand logo" href="#">Delapp</a> -->
@@ -25,18 +25,50 @@
         </nav>
     </header>
     <section class="section1-container">
-        <div class="container-fluid container1">
-            <div class="row justify-content-center">
-                <div class="col-md-6"><h3>Hello {{loginUser}}</h3></div>
+        <div class="container-fluid container1 pt-5 pb-5">
+            <div class="row justify-content-center pt-5">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="col-md-6">
+                        <h3 class="mb-5 huser">Hello
+                            <!-- {% for item in request.args.get('loginUser')%}
+                            {{ item }}
+                            {% endfor %}
+                         -->
+                         {{session['username']}}
+                        </h3>
+                        <!-- <div class="card" style="width: 14rem;">
+                            <img src="{{url_for('static',filename='1.png')}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <p class="card-text">Slot</p>
+                            </div>
+                        </div> -->
+                        <!-- <div class="stacked">
+                            <h5 class="text-white"> Slot 1</h5>
+                            <div class="cardh"></div>
+                            <img src="{{url_for('static',filename='1.png')}}" class="media img-fluid cardh" alt="...">
+                        </div> -->
+                        <p class="mb-2">Select your preffered solt for delivery</p>
+                        <p class="mb-4">If a slot is not available you will be alloted to next available slot</p>
+                        <p class="fs-5">Booked Slots</p>
+                        <div class="col-md-6">
+                            <div class="stacked">
+                                <h5 class="text-white slotname"> Slot 1</h5>
+                                <div class="cardh opacity-25"></div>
+                                <img src="{{url_for('static',filename='1.png')}}" class="media img-fluid cardh" alt="...">
+                            </div> 
+                        </div>
+
+                    </div>
+                </div>
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
                     <div class="col-md-6 ">
                         <div>
                             <h5 class="text-center">Book your slot</h5>
-                            <!-- <div class="mb-4 text-center">{{ msg }}</div> -->
+                            <div class="mb-4 text-center">{{ msg }}</div>
                             <form method="POST" action="">
                                 <div class="form-group mb-4">
                                 <label >User name</label>
-                                <input type="text" class="form-control" name="userName" id="formGroupExampleInput"  aria-describedby="userName" placeholder="Enter your name">
+                                <input type="text" class="form-control disabled" name="userName" id="formGroupExampleInput"  aria-describedby="userName" placeholder="Enter your name" value="{{session['username']}}">
                                 </div>
                                 <div class="form-group mb-4">
                                 <label >Address</label>
@@ -55,10 +87,11 @@
                                         <option>Slot 4</option>
                                     </select>
                                 </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-dark px-5 py-2 form_button border-0">Submit</button>
+                                </div>
                             </form>
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                        
                         </div>
                     </div>
                     

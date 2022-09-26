@@ -15,6 +15,18 @@ a.book-nav-button{
 
 }
 section.section1-container{
-    max-height: 100vh;
+    height: 100vh;
     background-color: #F3F1EE;
+}
+div.status{
+    background-color: #1D5258;
+    color: #ffffff;
+}
+
+h4.heading{
+    font-weight: 600;
+}
+
+div.status{
+    border-color:#1D5258 ;
 }

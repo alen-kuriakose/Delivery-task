@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for ('static',filename='css/status.css')}}">
     <title>Document</title>
 </head>
 <body>
@@ -17,17 +16,18 @@
                 <a class="navbar-brand" href="#">
                     <img src="{{url_for ('static',filename='Mask group.png')}}" alt="Bootstrap" width="auto" height="40">
                 </a>
+                <a href="{{ url_for('logout') }}" class='btn btn-dark book-nav-button border-0 py-2 px-4'>Log out</a>
                 <!-- <a class="navbar-brand logo" href="#">Delapp</a> -->
                 <!-- <a href="{{ url_for('login') }}" class='btn btn-dark book-nav-button border-0 py-2 px-4'>Book your slot</a> -->
             </div>
         </nav>
     </header>
-    <section class="d-flex align-items-center" style="height: 100vh;">
-        <div class="container">
+    <section class="d-flex align-items-center section1-container">
+        <div class="container ">
             <div class="row justify-content-center m-0">
-                <div class="col-8">
-                    <h1>get slot status</h1>
-                    <table class="table">
+                <div class="col-6">
+                    <div class="border border-2 p-3 rounded-top"><h4 class="text-center heading">Today's slot stauts </h4></div>
+                    <!-- <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Slot name</th>
@@ -36,34 +36,51 @@
                                 <th scope="col">Entries </th>
                             </tr>
                         </thead>
-                        {% for user in slotDetails %}
+                        {% for data in slotDetails %}
                         <tr>
                             <td >
-                                {{user[1]}}
+                                {{data[1]}}
                             </td>
                             <td>
-                                {{user[2]}}
+                                {{data[2]}}
                             </td>
                             <td>
-                                {{user[3]}}
+                                {{data[3]}}
                             </td>
                             <td>
-                                {{user[4]}}
+                                {{data[4]}}
                             </td>
                         </tr>
-                        <div>
-                            <span class="me-4 p-4">{{user[1]}}</span> 
-                            <span class="me-4 p-4">{{user[2]}}</span>
-                            <span class="me-4 p-4">{{user[3]}}</span>
-                            <span class="me-4 p-4">{{user[4]}}</span>
-                        </div>
                         {% endfor %}
-                    </table>
+                    </table> -->
+                    <div class="status d-flex mb-4 p-4  justify-content-between rounded-bottom">
+                        <div>
+                            Slot Name
+                        </div>
+                        <div>
+                            Start Time
+                        </div>
+                        <div>
+                            End Time
+                        </div>
+                        <div>
+                            Total Entries
+                        </div>
+                    </div>
+                    {% for data in slotDetails %}
+                        <div class="status-1 d-flex mb-4 justify-content-between border border-2 rounded">
+                            <div class="me-2 px-4 py-3 text-center">{{data[1]}}</div> 
+                            <div class="me-2 px-4 py-3 text-center">{{data[2]}}</div>
+                            <div class="me-2 px-4 py-3 text-center">{{data[3]}}</div>
+                            <div class="me-2 px-4 py-3 text-center">{{data[4]}}</div>
+                        </div>
+                    {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

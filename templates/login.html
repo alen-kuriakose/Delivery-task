@@ -33,21 +33,23 @@
                     <div class="col-md-6"> 
                         <div >
                             <div class="d-flex justify-content-center">
-                                <img src="{{url_for ('static',filename='Mask group.png')}}" alt="logo" width="auto" height="80" class="m-5">
+                                <a href="{{url_for('index')}}">
+                                    <img src="{{url_for ('static',filename='Mask group.png')}}" alt="logo" width="auto" height="80" class="m-5">
+                                </a>
                             </div>
                             <div class="d-flex justify-content-center mb-5">
                                 <h4>Login to your account</h4>
                             </div>
                             
                             <form method="POST" action="">
-                                <!-- <div class="msg p-5">{{ msg }}</div> -->
+                                <div class="msg text-center mb-3">{{ msg }}</div>
                                 <div class="form-group mb-4">
                                 <label class="mb-3">user name</label>
                                 <input type="text" class="form-control" name="loginUser" id="formGroupExampleInput"  aria-describedby="loginUser" placeholder="Enter user name">
                                 </div>
                                 <div class="form-group mb-4">
                                 <label class="mb-3">password</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" name="loginPassword" placeholder="password">
+                                <input type="password" class="form-control" id="formGroupExampleInput" name="loginPassword" placeholder="password">
                                 </div>
                                 <div class="d-flex justify-content-center mb-4">
                                     <button type="submit" class="btn btn-dark text-center px-5 py-2 form_button border-0">Login</button>
